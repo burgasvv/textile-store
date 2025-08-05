@@ -1,0 +1,22 @@
+
+server:
+  port: 9000
+spring:
+  application:
+    name: backend-server
+  servlet:
+    multipart:
+      max-request-size: 1000MB
+      max-file-size: 10000MB
+master:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5000/master_postgres_db
+    username: postgres
+    password: postgres
+replica:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5010/replica_postgres_db
+    username: postgres
+    password: postgres

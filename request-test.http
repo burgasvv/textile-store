@@ -1,0 +1,289 @@
+
+### Security Requests
+
+
+
+###
+GET /security/csrf-token
+Host: localhost:8765
+Accept: application/json
+
+
+
+### Identity Requests
+
+
+
+###
+GET /identities
+Host: localhost:8765
+Accept: application/json
+Authorization: Basic moscowa@gmail.com moscowa
+
+###
+GET /identities/by-id?identityId=f80a7113-d708-4058-8c80-42c42c1d691d
+Host: localhost:8765
+Accept: application/json
+Authorization: Basic moscowa@gmail.com moscowa
+
+### Use CSRF
+POST /identities/create
+Host: localhost:8765
+Accept: application/json
+Content-Type: application/json
+X-Csrf-Token: PgxVSxJZJTH7lTJVIieQbDzKjMN7NHYZOSyRWlAEM0h7Nqi2CDo3fiFsQ1fWoAIzEwqkCQiuoaFDAkM0CEijYzViAS0fAcmH
+
+{
+    "username": "burgasvv",
+    "password": "burgasvv",
+    "email": "burgasvv@gmail.com",
+    "phone": "(913)-903-53-73"
+}
+
+### Use CSRF
+PUT /identities/update?identityId=2cdaa11d-71f4-40cc-bd83-5186654ca1fd
+Host: localhost:8765
+Accept: application/json
+Content-Type: application/json
+Authorization: Basic burgasvv@gmail.com burgasvv
+X-Csrf-Token: rhNgQmETnJQTeoyR9fkMa6qJXLOIBVguOR9p3ik1d7wCOQY1liFUe1l3rvc-Q7T0kNQ4Dp_scdG4PDwDCShevxgCRoUxCjYG
+
+{
+    "username": "burgasvv"
+}
+
+### Use CSRF
+DELETE /identities/delete?identityId=2cdaa11d-71f4-40cc-bd83-5186654ca1fd
+Host: localhost:8765
+Accept: text/plain
+Authorization: Basic burgasvv@gmail.com burgasvv
+X-Csrf-Token: nlDmJdGwqARK0FVO9O0sXHwsjSFIT4yEEMaD8gCextPm0kTWpmLSHOnUmmdn6W0rkcAYOUlJoEN4duipIPG0kzGp9-rV4XTl
+
+### Use CSRF
+PATCH /identities/change-password?identityId=2cdaa11d-71f4-40cc-bd83-5186654ca1fd&password=burgasvv
+Host: localhost:8765
+Accept: text/plain
+Authorization: Basic burgasvv@gmail.com burgasvv111
+X-Csrf-Token: rhNgQmETnJQTeoyR9fkMa6qJXLOIBVguOR9p3ik1d7wCOQY1liFUe1l3rvc-Q7T0kNQ4Dp_scdG4PDwDCShevxgCRoUxCjYG
+
+
+
+### Category Requests
+
+
+
+###
+GET /categories
+Host: localhost:8765
+Accept: application/json
+
+###
+GET /categories/by-id?categoryId=8983ee7e-2818-4c22-bbb6-5d397ec592bc
+Host: localhost:8765
+Accept: application/json
+
+### Use CSRF
+POST /categories/create
+Host: localhost:8765
+Accept: application/json
+Content-Type: application/json
+Authorization: Basic moscowa@gmail.com moscowa
+X-Csrf-Token: K0H1gWKc_72VHCKuhU4oLRS4Qw7ulC2CSQyjz6KZyHwi47zKH3PN4gaqy4W4LEeYtGMcTCXcbjfXoEivL2-Wq5r4q0kRh4j-
+
+{
+    "name": "Ковры"
+}
+
+### Use CSRF
+POST /categories/create-multiple
+Host: localhost:8765
+Accept: application/json
+Content-Type: application/json
+Authorization: Basic moscowa@gmail.com moscowa
+X-Csrf-Token: K0H1gWKc_72VHCKuhU4oLRS4Qw7ulC2CSQyjz6KZyHwi47zKH3PN4gaqy4W4LEeYtGMcTCXcbjfXoEivL2-Wq5r4q0kRh4j-
+
+[
+    {
+        "name": "Портмоне"
+    },
+    {
+        "name": "Барсетки"
+    }
+]
+
+### Use CSRF
+POST /categories/update?categoryId=fce0657c-30e4-409d-b340-1ac5047f5579
+Host: localhost:8765
+Accept: application/json
+Content-Type: application/json
+Authorization: Basic moscowa@gmail.com moscowa
+X-Csrf-Token: Mwi6wZfketIQ3ODgCzGJsDkQt3_3LnI89ugpbMyIaeCNNMuAV22K8_SBQuM9vYGEbhy91F9zmh7BTEERzo4aCajqUYK0Aa2y
+
+{
+    "name": "Ковры"
+}
+
+### Use CSRF
+DELETE /categories/delete?categoryId=fce0657c-30e4-409d-b340-1ac5047f5579
+Host: localhost:8765
+Accept: text/plain
+Authorization: Basic moscowa@gmail.com moscowa
+X-Csrf-Token: LEo1OUOfDyK5pQtqErxP7a9grc0EMA5SLfNK3b4NZsUyR3bhSS4FDXSsPkGUlj0OdJF738kEgK9gCW1_GsJ97447UPZWdhXR
+
+
+
+### Product Requests
+
+
+
+###
+GET /products
+Host: localhost:8765
+
+###
+GET /products/by-id?productId=0c5874e5-a184-4767-b447-92a6b11e2b14
+Host: localhost:8765
+Accept: application/json
+
+### Use CSRF
+POST /products/create
+Host: localhost:8765
+Accept: application/json
+Content-Type: application/json
+Authorization: Basic moscowa@gmail.com moscowa
+X-Csrf-Token: K0H1gWKc_72VHCKuhU4oLRS4Qw7ulC2CSQyjz6KZyHwi47zKH3PN4gaqy4W4LEeYtGMcTCXcbjfXoEivL2-Wq5r4q0kRh4j-
+
+{
+    "name": "Новый Ковер",
+    "description": "Описание Нового Ковра",
+    "price": 7499.99,
+    "categoryId": "7c89418a-1f21-485b-8b02-4fcdc58a1fdf"
+}
+
+### Use CSRF
+POST /products/update?productId=ae2bc70e-d4ab-4837-a420-0f49d1595262
+Host: localhost:8765
+Accept: application/json
+Content-Type: application/json
+Authorization: Basic moscowa@gmail.com moscowa
+X-Csrf-Token: T_gcp-i3IoguDWvx4pGppZPxVB8rX88OXGd9AjDgfwVGgRQ-Kpwsk9-EE-sDPl2VhLydl_WVeX1PZqwja1ZKMADWSTYisHcO
+
+{
+    "price": 8499.99
+}
+
+### Use CSRF
+DELETE /products/delete?productId=ae2bc70e-d4ab-4837-a420-0f49d1595262
+Host: localhost:8765
+Accept: text/plain
+Authorization: Basic moscowa@gmail.com moscowa
+X-Csrf-Token: T_gcp-i3IoguDWvx4pGppZPxVB8rX88OXGd9AjDgfwVGgRQ-Kpwsk9-EE-sDPl2VhLydl_WVeX1PZqwja1ZKMADWSTYisHcO
+
+
+
+### Bucket Requests
+
+
+
+### cookie
+GET /buckets/by-cookie
+Host: localhost:8765
+Accept: application/json
+
+###
+GET /buckets/add-product-by-cookie?productId=e7c7844e-ed45-41dc-842d-b2e6acb8987b
+Host: localhost:8765
+Accept: application/json
+
+###
+GET /buckets/remove-product-by-cookie?productId=e7c7844e-ed45-41dc-842d-b2e6acb8987b
+Host: localhost:8765
+Accept: application/json
+
+###
+GET /buckets/plus-product-amount-by-cookie?productId=e7c7844e-ed45-41dc-842d-b2e6acb8987b
+Host: localhost:8765
+Accept: application/json
+
+###
+GET /buckets/minus-product-amount-by-cookie?productId=e7c7844e-ed45-41dc-842d-b2e6acb8987b
+Host: localhost:8765
+Accept: application/json
+
+### session
+GET /buckets/by-session
+Host: localhost:8765
+Accept: application/json
+
+###
+GET /buckets/add-product-in-session?productId=e7c7844e-ed45-41dc-842d-b2e6acb8987b
+Host: localhost:8765
+Accept: application/json
+
+###
+GET /buckets/remove-product-in-session?productId=e7c7844e-ed45-41dc-842d-b2e6acb8987b
+Host: localhost:8765
+Accept: application/json
+
+###
+GET /buckets/plus-product-amount-in-session?productId=e7c7844e-ed45-41dc-842d-b2e6acb8987b
+Host: localhost:8765
+Accept: application/json
+
+###
+GET /buckets/minus-product-amount-in-session?productId=e7c7844e-ed45-41dc-842d-b2e6acb8987b
+Host: localhost:8765
+Accept: application/json
+
+### identity
+GET /buckets/by-identity?identityId=f80a7113-d708-4058-8c80-42c42c1d691d
+Host: localhost:8765
+Accept: application/json
+Authorization: Basic moscowa@gmail.com moscowa
+
+### Use CSRF
+POST /buckets/add-product?identityId=f80a7113-d708-4058-8c80-42c42c1d691d&productId=0c5874e5-a184-4767-b447-92a6b11e2b14
+Host: localhost:8765
+Accept: application/json
+Authorization: Basic moscowa@gmail.com moscowa
+X-Csrf-Token: B4LsAAFV4FTcA4Zm25jpi2PJ_cxhbyPcIctsU_za48GbLzJ3ZbDfNGcwhWHxZ-ID77Xdv1ar0PVWVhXxRa4PZsu70PmqTgcV
+
+### Use CSRF
+PUT /buckets/plus-product-amount?identityId=f80a7113-d708-4058-8c80-42c42c1d691d&productId=0c5874e5-a184-4767-b447-92a6b11e2b14
+Host: localhost:8765
+Accept: application/json
+Authorization: Basic moscowa@gmail.com moscowa
+X-Csrf-Token: B4LsAAFV4FTcA4Zm25jpi2PJ_cxhbyPcIctsU_za48GbLzJ3ZbDfNGcwhWHxZ-ID77Xdv1ar0PVWVhXxRa4PZsu70PmqTgcV
+
+### Use CSRF
+PUT /buckets/minus-product-amount?identityId=bbc6e987-1183-443c-977a-1bc0235ef985&productId=e7c7844e-ed45-41dc-842d-b2e6acb8987b
+Host: localhost:8765
+Accept: application/json
+Authorization: Basic burgasvv@gmail.com burgasvv
+X-Csrf-Token: Y1NJ1NyZgYrK0EG7DdVWcq7uQ9a1qHKkXphEgG7JZgKFptr0AGQssOWht7nn6HTYO_hiE5bcbu6My0OJP6Fy41_xBDe3kenH
+
+### Use CSRF
+DELETE /buckets/remove-product?identityId=bbc6e987-1183-443c-977a-1bc0235ef985&productId=e7c7844e-ed45-41dc-842d-b2e6acb8987b
+Host: localhost:8765
+Accept: application/json
+Authorization: Basic burgasvv@gmail.com burgasvv
+X-Csrf-Token: C-jvWK4wZkUe8Amg4C0ZowczG2y39-hDGheFmZ5fG769Q2JraN-KPJcIUHYzyDzD1gAtwj8BNlSOlNluey6z-q9neYuPdFFY
+
+### Use CSRF
+POST /buckets/pay-bill?identityId=f80a7113-d708-4058-8c80-42c42c1d691d
+Host: localhost:8765
+Accept: application/json
+Authorization: Basic moscowa@gmail.com moscowa
+X-Csrf-Token: B4LsAAFV4FTcA4Zm25jpi2PJ_cxhbyPcIctsU_za48GbLzJ3ZbDfNGcwhWHxZ-ID77Xdv1ar0PVWVhXxRa4PZsu70PmqTgcV
+
+
+
+### Bill Requests
+
+
+
+###
+GET /bills/by-identity?identityId=f80a7113-d708-4058-8c80-42c42c1d691d
+Host: localhost:8765
+Accept: application/json
+Authorization: Basic moscowa@gmail.com moscowa

@@ -1,0 +1,52 @@
+
+services:
+
+  master-postgres:
+    image: postgres:latest
+    container_name: master_postgres
+    ports:
+      - "5000:5432"
+    environment:
+      POSTGRES_USERNAME: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: master_postgres_db
+      PGDATA: /var/lib/data/postgresql
+
+  replica-postgres:
+    image: postgres:latest
+    container_name: replica_postgres
+    ports:
+      - "5010:5432"
+    depends_on:
+      - master-postgres
+    environment:
+      POSTGRES_USERNAME: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: replica_postgres_db
+      PGDATA: /var/lib/data/postgresql
+
+  backend-server:
+    build:
+      context: backend-server
+      dockerfile: Dockerfile
+    ports:
+      - "9000:9000"
+    depends_on:
+      - master-postgres
+      - replica-postgres
+    restart: unless-stopped
+    environment:
+      MASTER_DATASOURCE_URL: jdbc:postgresql://master-postgres:5432/master_postgres_db
+      REPLICA_DATASOURCE_URL: jdbc:postgresql://replica-postgres:5432/replica_postgres_db
+
+  gateway-server:
+    build:
+      context: gateway-server
+      dockerfile: Dockerfile
+    ports:
+      - "8765:8765"
+    depends_on:
+      - master-postgres
+      - replica-postgres
+      - backend-server
+    restart: unless-stopped
